@@ -6,7 +6,8 @@ const profileUpload = multer({
     },
     fileFilter(req, file, cb){
         if (!file.originalname.match(/\.(jpg|jpeg|png)$/)){
-            cb(null,false);
+            req.fileValidationError = "Image Error";
+            return cb(null,false,req.fileValidationError);
         }
         cb(null,true);
     }

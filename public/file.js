@@ -5,16 +5,23 @@ function getTextImage(){
     const inputText = document.getElementById('testText').value;
     const inputFile = document.getElementById('testFile').files[0];
     const formData = new FormData();
-    formData.append('avatar',inputFile);
-    formData.append('simpletext',inputText);
-    fetch('/images',{method:'POST',body:formData})
-    .then((res)=>{
-        return res.json()
-    })
-    .then((resJson)=>{
-        console.log(resJson)
-        makeDiv(resJson)
-    })
+    if (!inputFile.type.match('image/*')){
+        console.log("not image")
+    } else {
+        formData.append('avatar',inputFile);
+        formData.append('simpletext',inputText);
+        fetch('/images',{method:'POST',body:formData})
+        .then((res)=>{
+            return res.json()
+        })
+        .then((resJson)=>{
+            if (resJson.error == true){
+                console.log("not image")
+            } else {
+                makeDiv(resJson)
+            }
+        })
+    }
 }
 
 subBtn.addEventListener('click',getTextImage)
@@ -39,3 +46,4 @@ function makeDiv(data){
         divArea.appendChild(divBlock)
     }
 }
+
