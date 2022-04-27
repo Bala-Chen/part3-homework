@@ -1,7 +1,7 @@
 
 const subBtn = document.getElementById('subBtn');
 
-function abc(){
+function getTextImage(){
     const inputText = document.getElementById('testText').value;
     const inputFile = document.getElementById('testFile').files[0];
     const formData = new FormData();
@@ -17,7 +17,7 @@ function abc(){
     })
 }
 
-subBtn.addEventListener('click',abc)
+subBtn.addEventListener('click',getTextImage)
 
 
 function makeDiv(data){
