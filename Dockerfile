@@ -3,7 +3,7 @@ ENV NODE_VERSION 16.14.2
 COPY package.json app.js package-lock.json /app/ 
 COPY controller /app/controller
 COPY public /app/public
-COPY module /app/module
+COPY model /app/model
 COPY views /app/views
 COPY . .
 WORKDIR /app 
